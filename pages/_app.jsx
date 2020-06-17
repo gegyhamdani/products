@@ -14,7 +14,7 @@ const MyApp = ({ Component, pageProps }) => {
 };
 
 MyApp.propTypes = {
-  Component: PropTypes.func,
+  Component: PropTypes.oneOfType([PropTypes.func, PropTypes.shape({})]),
   pageProps: PropTypes.shape({}),
 };
 

@@ -18,6 +18,22 @@ class MyDocument extends Document {
 
           <link rel="shortcut icon" href="/favicon.ico" />
           <link rel="apple-touch-icon" href="/favicon.ico" />
+          <style jsx global>
+            {`
+              html,
+              body {
+                padding: 0;
+                margin: 0;
+                font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+                  Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+                  Helvetica Neue, sans-serif;
+              }
+
+              * {
+                box-sizing: border-box;
+              }
+            `}
+          </style>
         </Head>
         <body>
           <Main />
