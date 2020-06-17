@@ -1,41 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import styles from './index.module.css';
 import CardBase from '../../../molecules/Card/CardBase';
 
-const ProductCard = () => {
+import styles from './index.module.css';
+
+const ProductCard = ({ productList }) => {
   return (
     <div className={styles.grid}>
-      <CardBase>
-        <h3>Examples</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio aliquam
-          esse animi eum eligendi dolore libero illo.
-        </p>
-      </CardBase>
-      <CardBase>
-        <h3>Examples</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio aliquam
-          esse animi eum eligendi dolore libero illo.
-        </p>
-      </CardBase>
-      <CardBase>
-        <h3>Examples</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio aliquam
-          esse animi eum eligendi dolore libero illo.
-        </p>
-      </CardBase>
-      <CardBase>
-        <h3>Examples</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio aliquam
-          esse animi eum eligendi dolore libero illo.
-        </p>
-      </CardBase>
+      {productList.map((val) => {
+        return (
+          <CardBase key={val.id}>
+            <h3 style={{ textAlign: 'center' }}>{val.title}</h3>
+          </CardBase>
+        );
+      })}
     </div>
   );
+};
+
+ProductCard.propTypes = {
+  productList: PropTypes.arrayOf(PropTypes.shape({})),
+};
+
+ProductCard.defaultProps = {
+  productList: [],
 };
 
 export default ProductCard;

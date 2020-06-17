@@ -36,7 +36,8 @@ Home.defaultProps = {
 };
 
 const mapStateToprops = (state) => {
-  const { productList, isLoadingProducts } = state;
+  const { products } = state;
+  const { productList, isLoadingProducts } = products;
   return { productList, isLoadingProducts };
 };
 
