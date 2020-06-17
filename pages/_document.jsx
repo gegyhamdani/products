@@ -11,9 +11,9 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <title>Product List</title>
+          <title>Product</title>
 
-          <meta name="description" content="Product List" />
+          <meta name="description" content="Product" />
           <link rel="icon" href="/favicon.ico" />
 
           <link rel="shortcut icon" href="/favicon.ico" />
