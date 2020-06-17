@@ -10,7 +10,6 @@ import LoadingScreen from '../src/organism/LoadingScreen';
 
 const Home = ({ fetchingProducts, productList, isLoadingProducts }) => {
   useEffect(() => {
-    if (productList.length > 0) return;
     fetchingProducts();
   }, []);
 
