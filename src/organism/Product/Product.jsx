@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styles from './index.module.css';
 import ProductCard from '../Card/ProductCard';
 import Header from '../Header';
+import fetchingProductsAPI from '../../redux/actions/products';
 
-const Product = () => {
+const Product = ({ fetchingProducts }) => {
+  useEffect(() => {
+    fetchingProducts();
+  }, []);
   return (
     <div className={styles.container}>
       <Header />
@@ -16,4 +22,20 @@ const Product = () => {
   );
 };
 
-export default Product;
+Product.propTypes = {
+  fetchingProducts: PropTypes.func,
+};
+
+Product.defaultProps = {
+  fetchingProducts: () => {},
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchingProducts: () => {
+      dispatch(fetchingProductsAPI());
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Product);
