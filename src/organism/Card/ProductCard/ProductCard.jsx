@@ -1,11 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 
 import CardBase from '../../../molecules/Card/CardBase';
 
+import ProductsContext from '../../../util/ProductsContext';
+
 import styles from './index.module.css';
 
-const ProductCard = ({ productList }) => {
+const ProductCard = () => {
+  const { productList } = useContext(ProductsContext);
+
   return (
     <div className={styles.grid}>
       {productList.map((val) => {
@@ -17,14 +20,6 @@ const ProductCard = ({ productList }) => {
       })}
     </div>
   );
-};
-
-ProductCard.propTypes = {
-  productList: PropTypes.arrayOf(PropTypes.shape({})),
-};
-
-ProductCard.defaultProps = {
-  productList: [],
 };
 
 export default ProductCard;

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import fetchingProductsAPI from '../src/redux/actions/products';
+import ProductsContext from '../src/util/ProductsContext';
 
 import Product from '../src/organism/Product';
 import LoadingScreen from '../src/organism/LoadingScreen';
@@ -17,7 +18,9 @@ const Home = ({ fetchingProducts, productList, isLoadingProducts }) => {
       {isLoadingProducts ? (
         <LoadingScreen />
       ) : (
-        <Product productList={productList} />
+        <ProductsContext.Provider value={{ productList }}>
+          <Product />
+        </ProductsContext.Provider>
       )}
     </>
   );
