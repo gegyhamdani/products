@@ -11,7 +11,8 @@ const composeEnhancers =
 
 const persistConfig = {
   key: 'root',
-  storage
+  storage,
+  blacklist: ['bucket'] // navigation will not be persisted
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

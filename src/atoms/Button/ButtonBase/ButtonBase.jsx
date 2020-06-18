@@ -14,7 +14,8 @@ const ButtonBase = ({ children, onClick }) => {
 ButtonBase.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element
+    PropTypes.element,
+    PropTypes.string
   ]),
   onClick: PropTypes.func
 };

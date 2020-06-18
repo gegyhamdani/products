@@ -3,12 +3,20 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import fetchingProductsAPI from '../src/redux/actions/products';
+import { createBucket, increaseQtyBucket } from '../src/redux/actions/bucket';
 import ProductsContext from '../src/util/ProductsContext';
 
 import Product from '../src/organism/Product';
 import LoadingScreen from '../src/organism/LoadingScreen';
 
-const Home = ({ fetchingProducts, productList, isLoadingProducts }) => {
+const Home = ({
+  fetchingProducts,
+  productList,
+  isLoadingProducts,
+  bucket,
+  createBucketProduct,
+  increaseQtyBucketProduct
+}) => {
   useEffect(() => {
     fetchingProducts();
   }, []);
@@ -19,7 +27,11 @@ const Home = ({ fetchingProducts, productList, isLoadingProducts }) => {
         <LoadingScreen />
       ) : (
         <ProductsContext.Provider value={{ productList }}>
-          <Product />
+          <Product
+            bucket={bucket}
+            createBucketProduct={createBucketProduct}
+            increaseQtyBucketProduct={increaseQtyBucketProduct}
+          />
         </ProductsContext.Provider>
       )}
     </>
@@ -28,26 +40,38 @@ const Home = ({ fetchingProducts, productList, isLoadingProducts }) => {
 
 Home.propTypes = {
   productList: PropTypes.arrayOf(PropTypes.shape({})),
+  bucket: PropTypes.shape({}),
   isLoadingProducts: PropTypes.bool,
-  fetchingProducts: PropTypes.func
+  fetchingProducts: PropTypes.func,
+  createBucketProduct: PropTypes.func,
+  increaseQtyBucketProduct: PropTypes.func
 };
 
 Home.defaultProps = {
   productList: [],
+  bucket: {},
   isLoadingProducts: false,
-  fetchingProducts: () => {}
+  fetchingProducts: () => {},
+  createBucketProduct: () => {},
+  increaseQtyBucketProduct: () => {}
 };
 
 const mapStateToprops = state => {
-  const { products } = state;
+  const { products, bucket } = state;
   const { productList, isLoadingProducts } = products;
-  return { productList, isLoadingProducts };
+  return { productList, isLoadingProducts, bucket };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchingProducts: () => {
       dispatch(fetchingProductsAPI());
+    },
+    createBucketProduct: (bucketData, id) => {
+      dispatch(createBucket(bucketData, id));
+    },
+    increaseQtyBucketProduct: (bucketData, id) => {
+      dispatch(increaseQtyBucket(bucketData, id));
     }
   };
 };
