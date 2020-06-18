@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
+import { FaPlus, FaMinus } from 'react-icons/fa';
 import CardBase from '../../../molecules/Card/CardBase';
 
-import ButtonBase from '../../../atoms/Button/ButtonBase';
+import ButtonIcon from '../../../atoms/Button/ButtonIcon';
 
 import ProductsContext from '../../../util/ProductsContext';
 
@@ -25,9 +26,15 @@ const ProductCard = ({ getQtyBucket, onAddBucket, onReduceBucket }) => {
               <div className={styles.bucket}>
                 <p style={{ textAlign: 'center' }}>Add to Bucket: </p>
                 <div className={`${styles['bucket-qty']}`}>
-                  <ButtonBase onClick={() => onReduceBucket(val)}>-</ButtonBase>
+                  <ButtonIcon
+                    onClick={() => onReduceBucket(val)}
+                    icon={<FaMinus />}
+                  />
                   {getQtyBucket(val.id)}
-                  <ButtonBase onClick={() => onAddBucket(val)}>+</ButtonBase>
+                  <ButtonIcon
+                    onClick={() => onAddBucket(val)}
+                    icon={<FaPlus />}
+                  />
                 </div>
               </div>
             </>
