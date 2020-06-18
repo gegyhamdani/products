@@ -25,12 +25,13 @@ const Home = ({
   reduceQtyBucketProduct
 }) => {
   useEffect(() => {
+    if (productList.length > 0) return;
     fetchingProducts();
   }, []);
 
   return (
     <>
-      {isLoadingProducts ? (
+      {!isLoadingProducts ? (
         <LoadingScreen />
       ) : (
         <ProductsContext.Provider value={{ productList }}>

@@ -34,7 +34,7 @@ const Product = ({
     return null;
   };
 
-  const getBucketData = id => {
+  const getQtyBucket = id => {
     for (let i = 0; i < Object.keys(bucket).length; i += 1) {
       if (bucket[id] !== undefined && bucket[id].id === id)
         return bucket[id].qty;
@@ -42,14 +42,22 @@ const Product = ({
     return '-';
   };
 
+  const getTotalQtyBucket = () => {
+    let total = 0;
+    Object.keys(bucket).forEach(key => {
+      total += parseInt(bucket[key].qty, 10);
+    });
+    return total;
+  };
+
   return (
     <div className={styles.container}>
-      <Header />
+      <Header totalQtyBucket={getTotalQtyBucket()} />
 
       <div className={styles.main}>
         <h1 className={styles.title}>Product List</h1>
         <ProductCard
-          getBucketData={getBucketData}
+          getQtyBucket={getQtyBucket}
           onAddBucket={handleAddBucket}
           onReduceBucket={handleReduceBucket}
         />

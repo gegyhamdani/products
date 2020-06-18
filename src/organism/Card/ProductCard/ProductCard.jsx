@@ -9,7 +9,7 @@ import ProductsContext from '../../../util/ProductsContext';
 
 import styles from './index.module.css';
 
-const ProductCard = ({ getBucketData, onAddBucket, onReduceBucket }) => {
+const ProductCard = ({ getQtyBucket, onAddBucket, onReduceBucket }) => {
   const { productList } = useContext(ProductsContext);
 
   return (
@@ -25,7 +25,7 @@ const ProductCard = ({ getBucketData, onAddBucket, onReduceBucket }) => {
               <p style={{ textAlign: 'center' }}>Add to Bucket</p>
               <div className={styles.bucket}>
                 <ButtonBase onClick={() => onReduceBucket(val)}>-</ButtonBase>
-                {getBucketData(val.id)}
+                {getQtyBucket(val.id)}
                 <ButtonBase onClick={() => onAddBucket(val)}>+</ButtonBase>
               </div>
             </>
@@ -37,13 +37,13 @@ const ProductCard = ({ getBucketData, onAddBucket, onReduceBucket }) => {
 };
 
 ProductCard.propTypes = {
-  getBucketData: PropTypes.func,
+  getQtyBucket: PropTypes.func,
   onAddBucket: PropTypes.func,
   onReduceBucket: PropTypes.func
 };
 
 ProductCard.defaultProps = {
-  getBucketData: () => {},
+  getQtyBucket: () => {},
   onAddBucket: () => {},
   onReduceBucket: () => {}
 };

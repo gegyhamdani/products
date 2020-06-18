@@ -1,16 +1,24 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useContext } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './index.module.css';
-import ProductsContext from '../../util/ProductsContext';
 
-const Header = () => {
-  const { productList } = useContext(ProductsContext);
-
+const Header = ({ totalQtyBucket }) => {
   return (
     <>
-      <div className={styles.header}>Total Product: {productList.length}</div>
+      <div className={styles.header}>
+        Total product in bucket: {totalQtyBucket}
+      </div>
     </>
   );
+};
+
+Header.propTypes = {
+  totalQtyBucket: PropTypes.number
+};
+
+Header.defaultProps = {
+  totalQtyBucket: 0
 };
 
 export default Header;
