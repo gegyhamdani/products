@@ -9,12 +9,12 @@ const CardBase = ({ children }) => {
 CardBase.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element,
-  ]),
+    PropTypes.element
+  ])
 };
 
 CardBase.defaultProps = {
-  children: null,
+  children: null
 };
 
 export default CardBase;

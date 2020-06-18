@@ -2,7 +2,7 @@ import { ACTION_TYPE_PRODUCTS } from '../types';
 
 const initialState = {
   productList: [],
-  isLoadingProducts: false,
+  isLoadingProducts: false
 };
 
 const products = (state = initialState, action) => {
@@ -12,12 +12,12 @@ const products = (state = initialState, action) => {
   const fetchedPost = () => ({
     ...state,
     productList,
-    isLoadingProducts: false,
+    isLoadingProducts: false
   });
 
   const loadingProduct = () => ({
     ...state,
-    isLoadingProducts: true,
+    isLoadingProducts: true
   });
 
   switch (type) {

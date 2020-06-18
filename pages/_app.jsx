@@ -18,12 +18,12 @@ const MyApp = ({ Component, pageProps }) => {
 
 MyApp.propTypes = {
   Component: PropTypes.oneOfType([PropTypes.func, PropTypes.shape({})]),
-  pageProps: PropTypes.shape({}),
+  pageProps: PropTypes.shape({})
 };
 
 MyApp.defaultProps = {
   Component: () => {},
-  pageProps: {},
+  pageProps: {}
 };
 
 export default MyApp;

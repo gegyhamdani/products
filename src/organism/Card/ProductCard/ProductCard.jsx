@@ -11,7 +11,7 @@ const ProductCard = () => {
 
   return (
     <div className={styles.grid}>
-      {productList.map((val) => {
+      {productList.map(val => {
         return (
           <CardBase key={val.id}>
             <h3 style={{ textAlign: 'center' }}>{val.title}</h3>

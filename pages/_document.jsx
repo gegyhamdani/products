@@ -14,10 +14,11 @@ class MyDocument extends Document {
           <title>Product</title>
 
           <meta name="description" content="Product" />
-          <link rel="icon" href="/favicon.ico" />
 
+          <link rel="icon" href="/favicon.ico" />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link rel="apple-touch-icon" href="/favicon.ico" />
+
           <style jsx global>
             {`
               html,

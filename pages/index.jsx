@@ -29,26 +29,26 @@ const Home = ({ fetchingProducts, productList, isLoadingProducts }) => {
 Home.propTypes = {
   productList: PropTypes.arrayOf(PropTypes.shape({})),
   isLoadingProducts: PropTypes.bool,
-  fetchingProducts: PropTypes.func,
+  fetchingProducts: PropTypes.func
 };
 
 Home.defaultProps = {
   productList: [],
   isLoadingProducts: false,
-  fetchingProducts: () => {},
+  fetchingProducts: () => {}
 };
 
-const mapStateToprops = (state) => {
+const mapStateToprops = state => {
   const { products } = state;
   const { productList, isLoadingProducts } = products;
   return { productList, isLoadingProducts };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     fetchingProducts: () => {
       dispatch(fetchingProductsAPI());
-    },
+    }
   };
 };
 
