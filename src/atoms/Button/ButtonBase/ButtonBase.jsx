@@ -3,9 +3,13 @@ import PropTypes from 'prop-types';
 
 import styles from './index.module.css';
 
-const ButtonBase = ({ children, onClick }) => {
+const ButtonBase = ({ children, onClick, className }) => {
   return (
-    <button type="button" onClick={onClick} className={styles.btn}>
+    <button
+      type="button"
+      onClick={onClick}
+      className={`${styles.button} ${className}`}
+    >
       {children}
     </button>
   );
@@ -17,11 +21,13 @@ ButtonBase.propTypes = {
     PropTypes.element,
     PropTypes.string
   ]),
+  className: PropTypes.string,
   onClick: PropTypes.func
 };
 
 ButtonBase.defaultProps = {
   children: null,
+  className: '',
   onClick: () => {}
 };
 
