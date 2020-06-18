@@ -7,39 +7,27 @@ const {
   REDUCE_QTY_BUCKET
 } = ACTION_TYPE_BUCKET;
 
-const createBucket = (bucketData, id) => dispatch => {
-  dispatch({
-    type: CREATE_BUCKET,
-    bucketData,
-    id
-  });
-  return Promise.resolve();
-};
+const createBucket = (bucketData, id) => ({
+  type: CREATE_BUCKET,
+  bucketData,
+  id
+});
 
-const deleteBucket = id => dispatch => {
-  dispatch({
-    type: DELETE_BUCKET,
-    id
-  });
-  return Promise.resolve();
-};
+const deleteBucket = id => ({
+  type: DELETE_BUCKET,
+  id
+});
 
-const increaseQtyBucket = (bucketData, id) => dispatch => {
-  dispatch({
-    type: INCREASE_QTY_BUCKET,
-    bucketData,
-    id
-  });
-  return Promise.resolve();
-};
+const increaseQtyBucket = (bucketData, id) => ({
+  type: INCREASE_QTY_BUCKET,
+  bucketData,
+  id
+});
 
-const reduceQtyBucket = (bucketData, id) => dispatch => {
-  dispatch({
-    type: REDUCE_QTY_BUCKET,
-    bucketData,
-    id
-  });
-  return Promise.resolve();
-};
+const reduceQtyBucket = (bucketData, id) => ({
+  type: REDUCE_QTY_BUCKET,
+  bucketData,
+  id
+});
 
 export { createBucket, deleteBucket, increaseQtyBucket, reduceQtyBucket };
