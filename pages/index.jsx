@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import fetchingProductsAPI from '../src/redux/actions/products';
-import { createBucket, increaseQtyBucket } from '../src/redux/actions/bucket';
+import {
+  createBucket,
+  increaseQtyBucket,
+  reduceQtyBucket
+} from '../src/redux/actions/bucket';
 import ProductsContext from '../src/util/ProductsContext';
 
 import Product from '../src/organism/Product';
@@ -15,7 +19,8 @@ const Home = ({
   isLoadingProducts,
   bucket,
   createBucketProduct,
-  increaseQtyBucketProduct
+  increaseQtyBucketProduct,
+  reduceQtyBucketProduct
 }) => {
   useEffect(() => {
     fetchingProducts();
@@ -31,6 +36,7 @@ const Home = ({
             bucket={bucket}
             createBucketProduct={createBucketProduct}
             increaseQtyBucketProduct={increaseQtyBucketProduct}
+            reduceQtyBucketProduct={reduceQtyBucketProduct}
           />
         </ProductsContext.Provider>
       )}
@@ -44,7 +50,8 @@ Home.propTypes = {
   isLoadingProducts: PropTypes.bool,
   fetchingProducts: PropTypes.func,
   createBucketProduct: PropTypes.func,
-  increaseQtyBucketProduct: PropTypes.func
+  increaseQtyBucketProduct: PropTypes.func,
+  reduceQtyBucketProduct: PropTypes.func
 };
 
 Home.defaultProps = {
@@ -53,7 +60,8 @@ Home.defaultProps = {
   isLoadingProducts: false,
   fetchingProducts: () => {},
   createBucketProduct: () => {},
-  increaseQtyBucketProduct: () => {}
+  increaseQtyBucketProduct: () => {},
+  reduceQtyBucketProduct: () => {}
 };
 
 const mapStateToprops = state => {
@@ -72,6 +80,9 @@ const mapDispatchToProps = dispatch => {
     },
     increaseQtyBucketProduct: (bucketData, id) => {
       dispatch(increaseQtyBucket(bucketData, id));
+    },
+    reduceQtyBucketProduct: (bucketData, id) => {
+      dispatch(reduceQtyBucket(bucketData, id));
     }
   };
 };
