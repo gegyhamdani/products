@@ -13,12 +13,12 @@ const ButtonIcon = ({ icon, onClick }) => {
 };
 
 ButtonIcon.propTypes = {
-  icon: PropTypes.string,
+  icon: PropTypes.shape({}),
   onClick: PropTypes.func
 };
 
 ButtonIcon.defaultProps = {
-  icon: '',
+  icon: {},
   onClick: () => {}
 };
 
