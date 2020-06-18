@@ -22,7 +22,7 @@ const ProductCard = ({ getBucketData }) => {
                 <h3>{val.title}</h3>
               </div>
               <hr />
-              <p style={{ textAlign: 'center' }}>Tambah Ke keranjang</p>
+              <p style={{ textAlign: 'center' }}>Add to Bucket</p>
               <div className={styles.bucket}>
                 <ButtonBase>-</ButtonBase>
                 {getBucketData(id)}
