@@ -4,27 +4,27 @@ import ButtonBase from '../ButtonBase';
 
 import styles from './index.module.css';
 
-const ButtonIcon = ({ icon, className, onClick }) => {
+const ButtonText = ({ text, className, onClick }) => {
   return (
     <ButtonBase
-      className={`${styles['button-icon']} ${className}`}
+      className={`${styles['button-text']} ${className}`}
       onClick={onClick}
     >
-      {icon}
+      {text}
     </ButtonBase>
   );
 };
 
-ButtonIcon.propTypes = {
-  icon: PropTypes.shape({}),
+ButtonText.propTypes = {
+  text: PropTypes.string,
   className: PropTypes.string,
   onClick: PropTypes.func
 };
 
-ButtonIcon.defaultProps = {
-  icon: {},
+ButtonText.defaultProps = {
+  text: '',
   className: '',
   onClick: () => {}
 };
 
-export default ButtonIcon;
+export default ButtonText;
