@@ -11,7 +11,12 @@ const bucket = (state = {}, action) => {
 
   const createBucket = () => ({ ...state, [id]: { ...bucketData } });
 
-  const deleteBucket = () => ({});
+  const deleteBucket = () => {
+    const cloneState = { ...state };
+    delete cloneState[id];
+
+    return cloneState;
+  };
 
   const increaseQtyBucket = () => ({
     ...state,

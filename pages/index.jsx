@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import fetchingProductsAPI from '../src/redux/actions/products';
 import {
   createBucket,
+  deleteBucket,
   increaseQtyBucket,
   reduceQtyBucket
 } from '../src/redux/actions/bucket';
@@ -19,6 +20,7 @@ const Home = ({
   isLoadingProducts,
   bucket,
   createBucketProduct,
+  deleteBucketProduct,
   increaseQtyBucketProduct,
   reduceQtyBucketProduct
 }) => {
@@ -35,6 +37,7 @@ const Home = ({
           <Product
             bucket={bucket}
             createBucketProduct={createBucketProduct}
+            deleteBucketProduct={deleteBucketProduct}
             increaseQtyBucketProduct={increaseQtyBucketProduct}
             reduceQtyBucketProduct={reduceQtyBucketProduct}
           />
@@ -50,6 +53,7 @@ Home.propTypes = {
   isLoadingProducts: PropTypes.bool,
   fetchingProducts: PropTypes.func,
   createBucketProduct: PropTypes.func,
+  deleteBucketProduct: PropTypes.func,
   increaseQtyBucketProduct: PropTypes.func,
   reduceQtyBucketProduct: PropTypes.func
 };
@@ -60,6 +64,7 @@ Home.defaultProps = {
   isLoadingProducts: false,
   fetchingProducts: () => {},
   createBucketProduct: () => {},
+  deleteBucketProduct: () => {},
   increaseQtyBucketProduct: () => {},
   reduceQtyBucketProduct: () => {}
 };
@@ -77,6 +82,9 @@ const mapDispatchToProps = dispatch => {
     },
     createBucketProduct: (bucketData, id) => {
       dispatch(createBucket(bucketData, id));
+    },
+    deleteBucketProduct: id => {
+      dispatch(deleteBucket(id));
     },
     increaseQtyBucketProduct: (bucketData, id) => {
       dispatch(increaseQtyBucket(bucketData, id));

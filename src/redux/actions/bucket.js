@@ -16,10 +16,9 @@ const createBucket = (bucketData, id) => dispatch => {
   return Promise.resolve();
 };
 
-const deleteBucket = (bucketData, id) => dispatch => {
+const deleteBucket = id => dispatch => {
   dispatch({
     type: DELETE_BUCKET,
-    bucketData,
     id
   });
   return Promise.resolve();

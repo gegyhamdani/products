@@ -9,6 +9,7 @@ import styles from './index.module.css';
 const Product = ({
   bucket,
   createBucketProduct,
+  deleteBucketProduct,
   increaseQtyBucketProduct,
   reduceQtyBucketProduct
 }) => {
@@ -27,6 +28,7 @@ const Product = ({
 
   const handleReduceBucket = data => {
     if (bucket[data.id] !== undefined && bucket[data.id].id === data.id) {
+      if (bucket[data.id].qty === 1) return deleteBucketProduct(data.id);
       return reduceQtyBucketProduct(bucket[data.id], data.id);
     }
     return null;
@@ -62,6 +64,7 @@ Product.propTypes = {
     qty: PropTypes.number
   }),
   createBucketProduct: PropTypes.func,
+  deleteBucketProduct: PropTypes.func,
   increaseQtyBucketProduct: PropTypes.func,
   reduceQtyBucketProduct: PropTypes.func
 };
@@ -69,6 +72,7 @@ Product.propTypes = {
 Product.defaultProps = {
   bucket: {},
   createBucketProduct: () => {},
+  deleteBucketProduct: () => {},
   increaseQtyBucketProduct: () => {},
   reduceQtyBucketProduct: () => {}
 };
