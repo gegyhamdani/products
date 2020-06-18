@@ -7,7 +7,24 @@
   margin-top: 3rem;
 }
 
-@media (max-width: 600px) {
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100px;
+  width: 100%;
+}
+
+.bucket {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+@media (max-width: 640px) {
   .grid {
     width: 100%;
     flex-direction: column;
