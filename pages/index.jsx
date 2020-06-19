@@ -23,10 +23,10 @@ const Home = ({
   productList,
   isLoadingProducts,
   bucket,
-  createBucketProduct,
-  deleteBucketProduct,
-  increaseQtyBucketProduct,
-  reduceQtyBucketProduct,
+  onCreateBucket,
+  onDeleteBucket,
+  onIncreaseQtyBucket,
+  onReduceQtyBucket,
   getTotalQtyBucket
 }) => {
   useEffect(() => {
@@ -43,10 +43,10 @@ const Home = ({
             <Header totalQtyBucket={getTotalQtyBucket} />
             <Product
               bucket={bucket}
-              createBucketProduct={createBucketProduct}
-              deleteBucketProduct={deleteBucketProduct}
-              increaseQtyBucketProduct={increaseQtyBucketProduct}
-              reduceQtyBucketProduct={reduceQtyBucketProduct}
+              onCreateBucket={onCreateBucket}
+              onDeleteBucket={onDeleteBucket}
+              onIncreaseQtyBucket={onIncreaseQtyBucket}
+              onReduceQtyBucket={onReduceQtyBucket}
             />
           </Pages>
         </ProductsContext.Provider>
@@ -60,10 +60,10 @@ Home.propTypes = {
   bucket: PropTypes.shape({}),
   isLoadingProducts: PropTypes.bool,
   fetchingProducts: PropTypes.func,
-  createBucketProduct: PropTypes.func,
-  deleteBucketProduct: PropTypes.func,
-  increaseQtyBucketProduct: PropTypes.func,
-  reduceQtyBucketProduct: PropTypes.func,
+  onCreateBucket: PropTypes.func,
+  onDeleteBucket: PropTypes.func,
+  onIncreaseQtyBucket: PropTypes.func,
+  onReduceQtyBucket: PropTypes.func,
   getTotalQtyBucket: PropTypes.number
 };
 
@@ -72,10 +72,10 @@ Home.defaultProps = {
   bucket: {},
   isLoadingProducts: false,
   fetchingProducts: () => {},
-  createBucketProduct: () => {},
-  deleteBucketProduct: () => {},
-  increaseQtyBucketProduct: () => {},
-  reduceQtyBucketProduct: () => {},
+  onCreateBucket: () => {},
+  onDeleteBucket: () => {},
+  onIncreaseQtyBucket: () => {},
+  onReduceQtyBucket: () => {},
   getTotalQtyBucket: 0
 };
 
@@ -88,12 +88,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchingProducts: () => dispatch(fetchingProductsAPI()),
-    createBucketProduct: (bucketData, id) =>
-      dispatch(createBucket(bucketData, id)),
-    deleteBucketProduct: id => dispatch(deleteBucket(id)),
-    increaseQtyBucketProduct: (bucketData, id) =>
+    onCreateBucket: (bucketData, id) => dispatch(createBucket(bucketData, id)),
+    onDeleteBucket: id => dispatch(deleteBucket(id)),
+    onIncreaseQtyBucket: (bucketData, id) =>
       dispatch(increaseQtyBucket(bucketData, id)),
-    reduceQtyBucketProduct: (bucketData, id) =>
+    onReduceQtyBucket: (bucketData, id) =>
       dispatch(reduceQtyBucket(bucketData, id))
   };
 };

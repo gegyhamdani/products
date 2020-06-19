@@ -10,10 +10,10 @@ import styles from './index.module.css';
 
 const Product = ({
   bucket,
-  createBucketProduct,
-  deleteBucketProduct,
-  increaseQtyBucketProduct,
-  reduceQtyBucketProduct
+  onCreateBucket,
+  onDeleteBucket,
+  onIncreaseQtyBucket,
+  onReduceQtyBucket
 }) => {
   const router = useRouter();
 
@@ -25,15 +25,15 @@ const Product = ({
 
   const handleAddBucket = data => {
     if (bucket[data.id] !== undefined && bucket[data.id].id === data.id) {
-      return increaseQtyBucketProduct(bucket[data.id], data.id);
+      return onIncreaseQtyBucket(bucket[data.id], data.id);
     }
-    return createBucketProduct(createNewBucketObj(data), data.id);
+    return onCreateBucket(createNewBucketObj(data), data.id);
   };
 
   const handleReduceBucket = data => {
     if (bucket[data.id] !== undefined && bucket[data.id].id === data.id) {
-      if (bucket[data.id].qty === 1) return deleteBucketProduct(data.id);
-      return reduceQtyBucketProduct(bucket[data.id], data.id);
+      if (bucket[data.id].qty === 1) return onDeleteBucket(data.id);
+      return onReduceQtyBucket(bucket[data.id], data.id);
     }
     return null;
   };
@@ -69,18 +69,18 @@ Product.propTypes = {
     id: PropTypes.number,
     qty: PropTypes.number
   }),
-  createBucketProduct: PropTypes.func,
-  deleteBucketProduct: PropTypes.func,
-  increaseQtyBucketProduct: PropTypes.func,
-  reduceQtyBucketProduct: PropTypes.func
+  onCreateBucket: PropTypes.func,
+  onDeleteBucket: PropTypes.func,
+  onIncreaseQtyBucket: PropTypes.func,
+  onReduceQtyBucket: PropTypes.func
 };
 
 Product.defaultProps = {
   bucket: {},
-  createBucketProduct: () => {},
-  deleteBucketProduct: () => {},
-  increaseQtyBucketProduct: () => {},
-  reduceQtyBucketProduct: () => {}
+  onCreateBucket: () => {},
+  onDeleteBucket: () => {},
+  onIncreaseQtyBucket: () => {},
+  onReduceQtyBucket: () => {}
 };
 
 export default Product;
