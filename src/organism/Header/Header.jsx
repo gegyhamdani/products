@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { FaAngleLeft } from 'react-icons/fa';
 
-import ButtonIcon from '../../atoms/Button/ButtonIcon';
+import ButtonIconText from '../../atoms/Button/ButtonIconText';
 
 import styles from './index.module.css';
 
@@ -15,14 +15,12 @@ const Header = ({ totalQtyBucket }) => {
     <>
       <div className={styles.header}>
         {pathname === '/checkout' ? (
-          <div className={styles['back-section']}>
-            <ButtonIcon
-              icon={<FaAngleLeft size={25} />}
-              className={`${styles['button-back']}`}
-              onClick={() => router.push('/')}
-            />
-            <p>Back to Home</p>
-          </div>
+          <ButtonIconText
+            icon={<FaAngleLeft size={30} />}
+            text="Back to Home"
+            className={`${styles['button-back']}`}
+            onClick={() => router.push('/')}
+          />
         ) : (
           <div />
         )}
