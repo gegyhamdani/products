@@ -2,8 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 
+import { FaAngleUp } from 'react-icons/fa';
+
 import CheckoutCard from '../Card/CheckoutCard';
+
 import ButtonText from '../../atoms/Button/ButtonText/ButtonText';
+import ButtonIcon from '../../atoms/Button/ButtonIcon';
 
 import styles from './index.module.css';
 
@@ -20,6 +24,10 @@ const Checkout = ({ bucketList, clearBucketProduct }) => {
           onClick={() => clearBucketProduct().then(() => router.push('/'))}
         />
       </div>
+      <ButtonIcon
+        icon={<FaAngleUp size={25} />}
+        className={`${styles['button-up']}`}
+      />
     </div>
   );
 };

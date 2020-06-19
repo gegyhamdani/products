@@ -19,3 +19,11 @@
   font-size: 1.2em;
   font-weight: bold;
 }
+
+.button-up {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  height: 40px;
+  width: 40px;
+}

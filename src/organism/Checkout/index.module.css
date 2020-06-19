@@ -18,6 +18,12 @@
   font-weight: bold;
 }
 
+.button-up {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
 @media (max-width: 640px) {
   .main {
     width: 100%;
