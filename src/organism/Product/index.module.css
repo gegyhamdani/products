@@ -26,11 +26,19 @@
   display: flex;
   list-style: none;
   outline: none;
+  transition: all 200ms;
 }
 
 .pagination > .active > a {
-  border-color: #0070f3 ;
-  color: #0070f3;
+  border-color: #3479B9 ;
+  background-color: #3479B9;
+  color: white;
+}
+
+.pagination > .active > a:hover {
+  border-color: #3479B9 ;
+  background-color: #3479B9;
+  color: #EBEBEB;
 }
 
 .pagination > li > a {
@@ -38,20 +46,16 @@
   padding: 5px 15px;
   outline: none;
   cursor: pointer;
+  transition: all 200ms;
 }
 
 .pagination > li > a, .pagination > li > span {
-  color: #808080
-}
-
-.pagination > li > span:hover {
-  border-color: #0070f3;
-  color: #0070f3;
+  transition: all 200ms;
 }
 
 .pagination > li > a:hover {
-  border-color: #0070f3;
-  color: #0070f3;
+  border-color: #3479B9 ;
+  background-color: #EBEBEB;
 }
 
 .pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span {
