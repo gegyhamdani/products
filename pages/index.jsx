@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
 import { compose } from 'redux';
+
 import fetchingProductsAPI from '../src/redux/actions/products';
 import {
   createBucket,
@@ -64,7 +64,7 @@ Home.propTypes = {
   deleteBucketProduct: PropTypes.func,
   increaseQtyBucketProduct: PropTypes.func,
   reduceQtyBucketProduct: PropTypes.func,
-  getTotalQtyBucket: PropTypes.func
+  getTotalQtyBucket: PropTypes.number
 };
 
 Home.defaultProps = {
@@ -76,10 +76,10 @@ Home.defaultProps = {
   deleteBucketProduct: () => {},
   increaseQtyBucketProduct: () => {},
   reduceQtyBucketProduct: () => {},
-  getTotalQtyBucket: () => {}
+  getTotalQtyBucket: 0
 };
 
-const mapStateToprops = state => {
+const mapStateToProps = state => {
   const { products, bucket } = state;
   const { productList, isLoadingProducts } = products;
   return { productList, isLoadingProducts, bucket };
@@ -107,5 +107,5 @@ const mapDispatchToProps = dispatch => {
 
 export default compose(
   withQtyBucket,
-  connect(mapStateToprops, mapDispatchToProps)
+  connect(mapStateToProps, mapDispatchToProps)
 )(Home);

@@ -12,6 +12,7 @@ const withQtyBucket = WrappedComponent => {
       });
       return total;
     };
+
     return (
       <WrappedComponent getTotalQtyBucket={getTotalQtyBucket()} {...props} />
     );
