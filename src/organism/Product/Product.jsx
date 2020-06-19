@@ -54,7 +54,7 @@ const Product = ({
       if (bucket[id] !== undefined && bucket[id].id === id)
         return bucket[id].qty;
     }
-    return '-';
+    return 0;
   };
 
   const handlePageClick = e => {
