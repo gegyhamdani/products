@@ -20,6 +20,7 @@ const Header = ({ totalQtyBucket }) => {
             text="Back to Home"
             className={`${styles['button-back']}`}
             onClick={() => router.push('/')}
+            label="Button Back"
           />
         ) : (
           <div />

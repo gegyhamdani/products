@@ -5,11 +5,12 @@ import ButtonBase from '../ButtonBase';
 
 import styles from './index.module.css';
 
-const ButtonIcon = ({ icon, className, onClick }) => {
+const ButtonIcon = ({ icon, className, onClick, label }) => {
   return (
     <ButtonBase
       className={`${styles['button-icon']} ${className}`}
       onClick={onClick}
+      label={label}
     >
       {icon}
     </ButtonBase>
@@ -19,13 +20,15 @@ const ButtonIcon = ({ icon, className, onClick }) => {
 ButtonIcon.propTypes = {
   icon: PropTypes.shape({}),
   className: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  label: PropTypes.string
 };
 
 ButtonIcon.defaultProps = {
   icon: {},
   className: '',
-  onClick: () => {}
+  onClick: () => {},
+  label: 'Icon'
 };
 
 export default ButtonIcon;

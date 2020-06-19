@@ -30,12 +30,14 @@ const ProductCard = ({ getQtyBucket, onAddBucket, onReduceBucket }) => {
                     className={`${styles['button-bucket']}`}
                     onClick={() => onReduceBucket(val)}
                     icon={<FaMinus />}
+                    label="Reduce Bucket"
                   />
                   {getQtyBucket(val.id)}
                   <ButtonIcon
                     className={`${styles['button-bucket']}`}
                     onClick={() => onAddBucket(val)}
                     icon={<FaPlus />}
+                    label="Add Bucket"
                   />
                 </div>
               </div>

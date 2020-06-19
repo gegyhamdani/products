@@ -53,6 +53,7 @@ const Product = ({
         text="Checkout"
         className={`${styles['button-checkout']}`}
         onClick={() => router.push('/checkout')}
+        label="Checkout"
       />
       <ProductCard
         getQtyBucket={getQtyBucket}

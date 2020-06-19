@@ -19,6 +19,7 @@ const Checkout = ({ bucketList, clearBucketProduct }) => {
           text="Buy"
           className={`${styles['button-buy']}`}
           onClick={() => clearBucketProduct().then(() => router.push('/'))}
+          label="Buy"
         />
       </div>
     </div>

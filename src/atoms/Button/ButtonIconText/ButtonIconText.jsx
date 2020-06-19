@@ -5,11 +5,19 @@ import ButtonBase from '../ButtonBase';
 
 import styles from './index.module.css';
 
-const ButtonIcon = ({ icon, text, className, textClassname, onClick }) => {
+const ButtonIcon = ({
+  icon,
+  text,
+  className,
+  textClassname,
+  onClick,
+  label
+}) => {
   return (
     <ButtonBase
       className={`${styles['button-icon-text']} ${className}`}
       onClick={onClick}
+      label={label}
     >
       {icon}
       <p className={`${textClassname}`}>{text}</p>
@@ -22,7 +30,8 @@ ButtonIcon.propTypes = {
   text: PropTypes.string,
   className: PropTypes.string,
   textClassname: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  label: PropTypes.string
 };
 
 ButtonIcon.defaultProps = {
@@ -30,7 +39,8 @@ ButtonIcon.defaultProps = {
   text: '',
   className: '',
   textClassname: '',
-  onClick: () => {}
+  onClick: () => {},
+  label: 'Icon Text'
 };
 
 export default ButtonIcon;
