@@ -3,7 +3,11 @@
   flex-direction: column;
   flex-wrap: wrap;
   width: 80%;
-  margin-right: 6em;
+  margin-right: 4em;
+}
+
+.checkout-card {
+  padding: 0 1.5em !important;
 }
 
 .bucket {
@@ -13,10 +17,23 @@
 }
 
 .bucket h3 {
+  padding: 1em 0;
   text-align: left;
   margin-right: 1em;
   margin-bottom: 0;
 }
+
+.qty {
+  display: flex;
+  align-items: center;
+}
+
+.lines {
+  border-left: 2px solid #d9d9d9;
+  height: 50px;
+  margin-right: 10px;
+}
+
 
 @media (max-width: 640px) {
   .grid {

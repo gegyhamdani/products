@@ -10,14 +10,20 @@ const CheckoutCard = ({ bucketList }) => {
     <div className={styles.grid}>
       {Object.keys(bucketList).map(keys => {
         return (
-          <CardBase key={bucketList[keys].id}>
+          <CardBase
+            key={bucketList[keys].id}
+            className={`${styles['checkout-card']}`}
+          >
             <>
               <div className={styles.bucket}>
                 <h3>{bucketList[keys].title}</h3>
-                <p>
-                  Quantity:&nbsp;
-                  {bucketList[keys].qty}
-                </p>
+                <div className={styles.qty}>
+                  <div className={styles.lines} />
+                  <p>
+                    Quantity:&nbsp;
+                    {bucketList[keys].qty}
+                  </p>
+                </div>
               </div>
             </>
           </CardBase>
