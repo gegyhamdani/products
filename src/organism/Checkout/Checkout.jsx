@@ -7,7 +7,7 @@ import ButtonText from '../../atoms/Button/ButtonText/ButtonText';
 
 import styles from './index.module.css';
 
-const Checkout = ({ bucketList }) => {
+const Checkout = ({ bucketList, clearBucketProduct }) => {
   const router = useRouter();
 
   return (
@@ -17,7 +17,7 @@ const Checkout = ({ bucketList }) => {
         <ButtonText
           text="Buy"
           className={`${styles['button-buy']}`}
-          onClick={() => router.push('/')}
+          onClick={() => clearBucketProduct().then(() => router.push('/'))}
         />
       </div>
     </div>
@@ -25,11 +25,13 @@ const Checkout = ({ bucketList }) => {
 };
 
 Checkout.propTypes = {
-  bucketList: PropTypes.shape({})
+  bucketList: PropTypes.shape({}),
+  clearBucketProduct: PropTypes.func
 };
 
 Checkout.defaultProps = {
-  bucketList: {}
+  bucketList: {},
+  clearBucketProduct: () => {}
 };
 
 export default Checkout;

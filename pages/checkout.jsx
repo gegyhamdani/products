@@ -2,28 +2,34 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import Header from '../src/organism/Header';
+
 import Pages from '../src/templates/Pages';
-import withQtyBucket from '../src/hoc/withQtyBucket';
+
+import Header from '../src/organism/Header';
 import Checkout from '../src/organism/Checkout';
 
-const CheckoutPage = ({ bucket, getTotalQtyBucket }) => {
+import withQtyBucket from '../src/hoc/withQtyBucket';
+import { clearBucket } from '../src/redux/actions/bucket';
+
+const CheckoutPage = ({ bucket, getTotalQtyBucket, clearBucketProduct }) => {
   return (
     <Pages>
       <Header totalQtyBucket={getTotalQtyBucket} />
-      <Checkout bucketList={bucket} />
+      <Checkout bucketList={bucket} clearBucketProduct={clearBucketProduct} />
     </Pages>
   );
 };
 
 CheckoutPage.propTypes = {
   bucket: PropTypes.shape({}),
-  getTotalQtyBucket: PropTypes.number
+  getTotalQtyBucket: PropTypes.number,
+  clearBucketProduct: PropTypes.func
 };
 
 CheckoutPage.defaultProps = {
   bucket: {},
-  getTotalQtyBucket: 0
+  getTotalQtyBucket: 0,
+  clearBucketProduct: () => {}
 };
 
 const mapStateToProps = state => {
@@ -31,4 +37,13 @@ const mapStateToProps = state => {
   return { bucket };
 };
 
-export default compose(withQtyBucket, connect(mapStateToProps))(CheckoutPage);
+const mapDispatchToProps = dispatch => {
+  return {
+    clearBucketProduct: () => dispatch(clearBucket())
+  };
+};
+
+export default compose(
+  withQtyBucket,
+  connect(mapStateToProps, mapDispatchToProps)
+)(CheckoutPage);

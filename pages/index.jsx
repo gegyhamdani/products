@@ -87,21 +87,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchingProducts: () => {
-      dispatch(fetchingProductsAPI());
-    },
-    createBucketProduct: (bucketData, id) => {
-      dispatch(createBucket(bucketData, id));
-    },
-    deleteBucketProduct: id => {
-      dispatch(deleteBucket(id));
-    },
-    increaseQtyBucketProduct: (bucketData, id) => {
-      dispatch(increaseQtyBucket(bucketData, id));
-    },
-    reduceQtyBucketProduct: (bucketData, id) => {
-      dispatch(reduceQtyBucket(bucketData, id));
-    }
+    fetchingProducts: () => dispatch(fetchingProductsAPI()),
+    createBucketProduct: (bucketData, id) =>
+      dispatch(createBucket(bucketData, id)),
+    deleteBucketProduct: id => dispatch(deleteBucket(id)),
+    increaseQtyBucketProduct: (bucketData, id) =>
+      dispatch(increaseQtyBucket(bucketData, id)),
+    reduceQtyBucketProduct: (bucketData, id) =>
+      dispatch(reduceQtyBucket(bucketData, id))
   };
 };
 

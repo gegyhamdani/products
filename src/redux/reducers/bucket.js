@@ -31,8 +31,8 @@ const bucket = (state = {}, action) => {
 
   const clearBucket = () => {
     const cloneState = { ...state };
-    Object.key(cloneState).forEech(key => {
-      delete cloneState[key];
+    Object.keys(cloneState).map(key => {
+      return delete cloneState[key];
     });
 
     return cloneState;
