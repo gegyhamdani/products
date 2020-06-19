@@ -17,7 +17,7 @@ const ProductCard = ({ getQtyBucket, onAddBucket, onReduceBucket }) => {
     <div className={styles.grid}>
       {productList.map(val => {
         return (
-          <CardBase key={val.id}>
+          <CardBase key={val.id} className={`${styles['product-card']}`}>
             <>
               <div className={styles.title}>
                 <h3>{val.title}</h3>

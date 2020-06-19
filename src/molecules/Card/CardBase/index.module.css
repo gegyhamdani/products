@@ -1,7 +1,5 @@
 .card {
   margin: 1rem;
-  min-height: 200px;
-  flex-basis: 24%;
   padding: 1.5rem;
   color: inherit;
   text-decoration: none;

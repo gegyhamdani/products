@@ -1,0 +1,24 @@
+.grid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 60%;
+}
+
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title h3 {
+  margin-bottom: 0;
+}
+
+
+@media (max-width: 640px) {
+  .grid {
+    width: 95%;
+  }
+}

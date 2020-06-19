@@ -1,8 +1,28 @@
 .main {
-    padding: 3rem 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+  padding: 3rem 0;
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.button-buy {
+  margin-top: 1rem;
+  padding: 12px 36px !important;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+@media (max-width: 640px) {
+  .main {
+    width: 100%;
+    flex-direction: column-reverse;  
     justify-content: center;
-    align-items: center;
+    align-items: center; 
   }
+}
