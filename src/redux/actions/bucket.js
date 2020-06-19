@@ -4,7 +4,8 @@ const {
   CREATE_BUCKET,
   DELETE_BUCKET,
   INCREASE_QTY_BUCKET,
-  REDUCE_QTY_BUCKET
+  REDUCE_QTY_BUCKET,
+  CLEAR_BUCKET
 } = ACTION_TYPE_BUCKET;
 
 const createBucket = (bucketData, id) => ({
@@ -30,4 +31,17 @@ const reduceQtyBucket = (bucketData, id) => ({
   id
 });
 
-export { createBucket, deleteBucket, increaseQtyBucket, reduceQtyBucket };
+const clearBucket = () => dispatch => {
+  dispatch({
+    type: CLEAR_BUCKET
+  });
+  return Promise.resolve();
+};
+
+export {
+  createBucket,
+  deleteBucket,
+  increaseQtyBucket,
+  reduceQtyBucket,
+  clearBucket
+};

@@ -5,7 +5,8 @@ const bucket = (state = {}, action) => {
     CREATE_BUCKET,
     DELETE_BUCKET,
     INCREASE_QTY_BUCKET,
-    REDUCE_QTY_BUCKET
+    REDUCE_QTY_BUCKET,
+    CLEAR_BUCKET
   } = ACTION_TYPE_BUCKET;
   const { type, bucketData, id } = action;
 
@@ -28,6 +29,15 @@ const bucket = (state = {}, action) => {
     [id]: { ...state[id], qty: bucketData.qty - 1 }
   });
 
+  const clearBucket = () => {
+    const cloneState = { ...state };
+    Object.key(cloneState).forEech(key => {
+      delete cloneState[key];
+    });
+
+    return cloneState;
+  };
+
   switch (type) {
     case CREATE_BUCKET:
       return createBucket();
@@ -37,6 +47,8 @@ const bucket = (state = {}, action) => {
       return increaseQtyBucket();
     case REDUCE_QTY_BUCKET:
       return reduceQtyBucket();
+    case CLEAR_BUCKET:
+      return clearBucket();
     default:
       return state;
   }
