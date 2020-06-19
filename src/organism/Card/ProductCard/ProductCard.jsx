@@ -27,11 +27,13 @@ const ProductCard = ({ getQtyBucket, onAddBucket, onReduceBucket }) => {
                 <p style={{ textAlign: 'center' }}>Add to Bucket: </p>
                 <div className={`${styles['bucket-qty']}`}>
                   <ButtonIcon
+                    className={`${styles['button-bucket']}`}
                     onClick={() => onReduceBucket(val)}
                     icon={<FaMinus />}
                   />
                   {getQtyBucket(val.id)}
                   <ButtonIcon
+                    className={`${styles['button-bucket']}`}
                     onClick={() => onAddBucket(val)}
                     icon={<FaPlus />}
                   />
