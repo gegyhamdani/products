@@ -13,6 +13,8 @@ import ProductsContext from '../src/util/ProductsContext';
 
 import Product from '../src/organism/Product';
 import LoadingScreen from '../src/organism/LoadingScreen';
+import Pages from '../src/templates/Pages';
+import Header from '../src/organism/Header';
 
 const Home = ({
   fetchingProducts,
@@ -28,19 +30,30 @@ const Home = ({
     fetchingProducts();
   }, []);
 
+  const getTotalQtyBucket = () => {
+    let total = 0;
+    Object.keys(bucket).forEach(key => {
+      total += parseInt(bucket[key].qty, 10);
+    });
+    return total;
+  };
+
   return (
     <>
       {isLoadingProducts ? (
         <LoadingScreen />
       ) : (
         <ProductsContext.Provider value={{ productList }}>
-          <Product
-            bucket={bucket}
-            createBucketProduct={createBucketProduct}
-            deleteBucketProduct={deleteBucketProduct}
-            increaseQtyBucketProduct={increaseQtyBucketProduct}
-            reduceQtyBucketProduct={reduceQtyBucketProduct}
-          />
+          <Pages>
+            <Header totalQtyBucket={getTotalQtyBucket()} />
+            <Product
+              bucket={bucket}
+              createBucketProduct={createBucketProduct}
+              deleteBucketProduct={deleteBucketProduct}
+              increaseQtyBucketProduct={increaseQtyBucketProduct}
+              reduceQtyBucketProduct={reduceQtyBucketProduct}
+            />
+          </Pages>
         </ProductsContext.Provider>
       )}
     </>

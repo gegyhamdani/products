@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Router from 'next/router';
 
 import ProductCard from '../Card/ProductCard';
-import Header from '../Header';
 
 import styles from './index.module.css';
 import ButtonText from '../../atoms/Button/ButtonText/ButtonText';
@@ -44,31 +43,19 @@ const Product = ({
     return '-';
   };
 
-  const getTotalQtyBucket = () => {
-    let total = 0;
-    Object.keys(bucket).forEach(key => {
-      total += parseInt(bucket[key].qty, 10);
-    });
-    return total;
-  };
-
   return (
-    <div className={styles.container}>
-      <Header totalQtyBucket={getTotalQtyBucket()} />
-
-      <div className={styles.main}>
-        <h1 className={styles.title}>Product List</h1>
-        <ButtonText
-          text="Checkout"
-          className={`${styles['button-checkout']}`}
-          onClick={() => Router.push('/checkout')}
-        />
-        <ProductCard
-          getQtyBucket={getQtyBucket}
-          onAddBucket={handleAddBucket}
-          onReduceBucket={handleReduceBucket}
-        />
-      </div>
+    <div className={styles.main}>
+      <h1 className={styles.title}>Product List</h1>
+      <ButtonText
+        text="Checkout"
+        className={`${styles['button-checkout']}`}
+        onClick={() => Router.push('/checkout')}
+      />
+      <ProductCard
+        getQtyBucket={getQtyBucket}
+        onAddBucket={handleAddBucket}
+        onReduceBucket={handleReduceBucket}
+      />
     </div>
   );
 };
