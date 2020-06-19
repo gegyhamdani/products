@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import { compose } from 'redux';
 import fetchingProductsAPI from '../src/redux/actions/products';
 import {
   createBucket,
@@ -15,6 +16,7 @@ import Product from '../src/organism/Product';
 import LoadingScreen from '../src/organism/LoadingScreen';
 import Pages from '../src/templates/Pages';
 import Header from '../src/organism/Header';
+import withQtyBucket from '../src/hoc/withQtyBucket';
 
 const Home = ({
   fetchingProducts,
@@ -24,19 +26,12 @@ const Home = ({
   createBucketProduct,
   deleteBucketProduct,
   increaseQtyBucketProduct,
-  reduceQtyBucketProduct
+  reduceQtyBucketProduct,
+  getTotalQtyBucket
 }) => {
   useEffect(() => {
     fetchingProducts();
   }, []);
-
-  const getTotalQtyBucket = () => {
-    let total = 0;
-    Object.keys(bucket).forEach(key => {
-      total += parseInt(bucket[key].qty, 10);
-    });
-    return total;
-  };
 
   return (
     <>
@@ -45,7 +40,7 @@ const Home = ({
       ) : (
         <ProductsContext.Provider value={{ productList }}>
           <Pages>
-            <Header totalQtyBucket={getTotalQtyBucket()} />
+            <Header totalQtyBucket={getTotalQtyBucket} />
             <Product
               bucket={bucket}
               createBucketProduct={createBucketProduct}
@@ -68,7 +63,8 @@ Home.propTypes = {
   createBucketProduct: PropTypes.func,
   deleteBucketProduct: PropTypes.func,
   increaseQtyBucketProduct: PropTypes.func,
-  reduceQtyBucketProduct: PropTypes.func
+  reduceQtyBucketProduct: PropTypes.func,
+  getTotalQtyBucket: PropTypes.func
 };
 
 Home.defaultProps = {
@@ -79,7 +75,8 @@ Home.defaultProps = {
   createBucketProduct: () => {},
   deleteBucketProduct: () => {},
   increaseQtyBucketProduct: () => {},
-  reduceQtyBucketProduct: () => {}
+  reduceQtyBucketProduct: () => {},
+  getTotalQtyBucket: () => {}
 };
 
 const mapStateToprops = state => {
@@ -108,4 +105,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToprops, mapDispatchToProps)(Home);
+export default compose(
+  withQtyBucket,
+  connect(mapStateToprops, mapDispatchToProps)
+)(Home);
