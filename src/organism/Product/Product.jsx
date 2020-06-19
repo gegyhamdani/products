@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Router from 'next/router';
 
 import ProductCard from '../Card/ProductCard';
 import Header from '../Header';
@@ -60,6 +61,7 @@ const Product = ({
         <ButtonText
           text="Checkout"
           className={`${styles['button-checkout']}`}
+          onClick={() => Router.push('/checkout')}
         />
         <ProductCard
           getQtyBucket={getQtyBucket}
