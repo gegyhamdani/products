@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
+import ReactPaginate from 'react-paginate';
 
 import ProductCard from '../Card/ProductCard';
 
 import ButtonText from '../../atoms/Button/ButtonText/ButtonText';
+
+import ProductsContext from '../../util/ProductsContext';
 
 import styles from './index.module.css';
 
@@ -15,6 +18,14 @@ const Product = ({
   onIncreaseQtyBucket,
   onReduceQtyBucket
 }) => {
+  const [offset, setOffset] = useState(0);
+  const [pageCount, setPageCount] = useState(0);
+  const [activeProduct, setActiveProduct] = useState([]);
+
+  const perPage = 9;
+
+  const { productList } = useContext(ProductsContext);
+
   const router = useRouter();
 
   const createNewBucketObj = data => {
@@ -46,6 +57,20 @@ const Product = ({
     return '-';
   };
 
+  const handlePageClick = e => {
+    const selectedPage = e.selected;
+    const newOffset = selectedPage * perPage;
+    setOffset(newOffset);
+  };
+
+  useEffect(() => {
+    setActiveProduct(productList.slice(offset, offset + perPage));
+  }, [offset]);
+
+  useEffect(() => {
+    setPageCount(Math.ceil(productList.length / perPage));
+  }, [perPage]);
+
   return (
     <div className={styles.main}>
       <h1 className={styles.title}>Product List</h1>
@@ -56,9 +81,23 @@ const Product = ({
         label="Checkout"
       />
       <ProductCard
+        activeProduct={activeProduct}
         getQtyBucket={getQtyBucket}
         onAddBucket={handleAddBucket}
         onReduceBucket={handleReduceBucket}
+      />
+      <ReactPaginate
+        previousLabel="previous"
+        nextLabel="next"
+        breakLabel="..."
+        breakClassName="break-me"
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={e => handlePageClick(e)}
+        containerClassName={styles.pagination}
+        subContainerClassName={`${styles.pages} ${styles.pagination}`}
+        activeClassName={styles.active}
       />
     </div>
   );

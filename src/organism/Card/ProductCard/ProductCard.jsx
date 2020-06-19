@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { FaPlus, FaMinus } from 'react-icons/fa';
@@ -6,16 +6,17 @@ import CardBase from '../../../molecules/Card/CardBase';
 
 import ButtonIcon from '../../../atoms/Button/ButtonIcon';
 
-import ProductsContext from '../../../util/ProductsContext';
-
 import styles from './index.module.css';
 
-const ProductCard = ({ getQtyBucket, onAddBucket, onReduceBucket }) => {
-  const { productList } = useContext(ProductsContext);
-
+const ProductCard = ({
+  activeProduct,
+  getQtyBucket,
+  onAddBucket,
+  onReduceBucket
+}) => {
   return (
     <div className={styles.grid}>
-      {productList.map(val => {
+      {activeProduct.map(val => {
         return (
           <CardBase key={val.id} className={`${styles['product-card']}`}>
             <>
@@ -50,12 +51,14 @@ const ProductCard = ({ getQtyBucket, onAddBucket, onReduceBucket }) => {
 };
 
 ProductCard.propTypes = {
+  activeProduct: PropTypes.arrayOf(PropTypes.shape({})),
   getQtyBucket: PropTypes.func,
   onAddBucket: PropTypes.func,
   onReduceBucket: PropTypes.func
 };
 
 ProductCard.defaultProps = {
+  activeProduct: [],
   getQtyBucket: () => {},
   onAddBucket: () => {},
   onReduceBucket: () => {}
