@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 
 import ProductCard from '../Card/ProductCard';
 
@@ -15,6 +15,8 @@ const Product = ({
   increaseQtyBucketProduct,
   reduceQtyBucketProduct
 }) => {
+  const router = useRouter();
+
   const createNewBucketObj = data => {
     const qty = { qty: 1 };
     const obj = { ...data, ...qty };
@@ -50,7 +52,7 @@ const Product = ({
       <ButtonText
         text="Checkout"
         className={`${styles['button-checkout']}`}
-        onClick={() => Router.push('/checkout')}
+        onClick={() => router.push('/checkout')}
       />
       <ProductCard
         getQtyBucket={getQtyBucket}
