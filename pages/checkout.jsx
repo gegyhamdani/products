@@ -7,18 +7,13 @@ import Pages from '../src/templates/Pages';
 import withQtyBucket from '../src/hoc/withQtyBucket';
 import Checkout from '../src/organism/Checkout';
 
-const CheckoutPage = ({ getTotalQtyBucket }) => {
+const CheckoutPage = ({ bucket, getTotalQtyBucket }) => {
   return (
     <Pages>
       <Header totalQtyBucket={getTotalQtyBucket} />
-      <Checkout />
+      <Checkout bucketList={bucket} />
     </Pages>
   );
-};
-
-const mapStateToProps = state => {
-  const { bucket } = state;
-  return { bucket };
 };
 
 CheckoutPage.propTypes = {
@@ -29,6 +24,11 @@ CheckoutPage.propTypes = {
 CheckoutPage.defaultProps = {
   bucket: {},
   getTotalQtyBucket: 0
+};
+
+const mapStateToProps = state => {
+  const { bucket } = state;
+  return { bucket };
 };
 
 export default compose(withQtyBucket, connect(mapStateToProps))(CheckoutPage);

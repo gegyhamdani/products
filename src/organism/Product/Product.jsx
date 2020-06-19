@@ -4,8 +4,9 @@ import Router from 'next/router';
 
 import ProductCard from '../Card/ProductCard';
 
-import styles from './index.module.css';
 import ButtonText from '../../atoms/Button/ButtonText/ButtonText';
+
+import styles from './index.module.css';
 
 const Product = ({
   bucket,

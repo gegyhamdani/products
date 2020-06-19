@@ -2,23 +2,25 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 60%;
+  width: 80%;
+  margin-right: 6em;
 }
 
-
-.title {
+.bucket {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
 }
 
-.title h3 {
+.bucket h3 {
+  text-align: left;
+  margin-right: 1em;
   margin-bottom: 0;
 }
-
 
 @media (max-width: 640px) {
   .grid {
     width: 95%;
+    margin-right: 0;
   }
 }
