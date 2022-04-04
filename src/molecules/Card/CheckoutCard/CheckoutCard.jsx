@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CardBase from '../../../molecules/Card/CardBase';
+import CardBase from '../CardBase';
 
 import styles from './index.module.css';
 

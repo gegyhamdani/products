@@ -13,7 +13,7 @@ import {
 import ProductsContext from '../src/util/ProductsContext';
 
 import Product from '../src/organism/Product';
-import LoadingScreen from '../src/organism/LoadingScreen';
+import LoadingScreen from '../src/molecules/LoadingScreen';
 import Pages from '../src/templates/Pages';
 import Header from '../src/organism/Header';
 import withQtyBucket from '../src/hoc/withQtyBucket';
